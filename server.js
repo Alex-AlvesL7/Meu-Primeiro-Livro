@@ -5,6 +5,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { createClient } from '@supabase/supabase-js';
 import { randomUUID } from 'crypto';
+import https from 'https';
+import http from 'http';
 
 config();
 
@@ -25,6 +27,41 @@ const supabase = createClient(
   process.env.VITE_SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY || process.env.VITE_SUPABASE_ANON_KEY
 );
+
+// Proxy do PDF — evita CORS do Google Drive
+app.get('/api/pdf', async (req, res) => {
+  const { token } = req.query;
+  if (!token) return res.status(401).json({ error: 'Token obrigatório' });
+  try {
+    const { data, error } = await supabase
+      .from('access_tokens')
+      .select('id')
+      .eq('token', token)
+      .single();
+    if (error || !data) return res.status(403).json({ error: 'Acesso negado' });
+  } catch {
+    return res.status(403).json({ error: 'Acesso negado' });
+  }
+
+  const fetchPdf = (url, redirectCount = 0) => {
+    if (redirectCount > 5) return res.status(500).send('Too many redirects');
+    const mod = url.startsWith('https') ? https : http;
+    mod.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (response) => {
+      if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
+        return fetchPdf(response.headers.location, redirectCount + 1);
+      }
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'inline; filename="the-melted-cross.pdf"');
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      response.pipe(res);
+    }).on('error', (err) => {
+      console.error('Erro ao buscar PDF:', err);
+      res.status(500).send('Erro ao carregar PDF');
+    });
+  };
+
+  fetchPdf(PDF_URL);
+});
 
 // Valida token de acesso ao leitor
 app.get('/api/validate-token', async (req, res) => {

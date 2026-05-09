@@ -20,14 +20,12 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
-const PDF_URL =
-  'https://drive.google.com/uc?export=download&confirm=t&id=1Ye8WnnnC8BlCFtcUXgl7Lw0RvDUdRwf2';
-
 type Status = 'validating' | 'valid' | 'invalid';
 
 export default function Reader() {
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
+  const PDF_URL = `/api/pdf?token=${encodeURIComponent(token || '')}`;
 
   const [status, setStatus] = useState<Status>('validating');
   const [numPages, setNumPages] = useState<number>(0);

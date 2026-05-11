@@ -351,13 +351,21 @@ function Home() {
             <a href="#personagens" className="transition-colors hover:text-gold">Personagens</a>
             <a href="#arquivos" className="transition-colors hover:text-gold">Arquivos</a>
           </div>
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className="group relative overflow-hidden rounded-full border border-gold/40 bg-gold/5 px-6 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-gold transition-all hover:bg-gold hover:text-black md:px-8 md:py-2.5 md:text-[10px]"
-          >
-            <span className="relative z-10">Lista VIP</span>
-            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
-          </button>
+          <div className="flex items-center gap-3">
+            <a
+              href="/minha-conta"
+              className="hidden text-[9px] font-bold uppercase tracking-[0.2em] text-neutral-500 transition-colors hover:text-gold md:block"
+            >
+              Minha Conta
+            </a>
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="group relative overflow-hidden rounded-full border border-gold/40 bg-gold/5 px-6 py-2 text-[9px] font-bold uppercase tracking-[0.2em] text-gold transition-all hover:bg-gold hover:text-black md:px-8 md:py-2.5 md:text-[10px]"
+            >
+              <span className="relative z-10">Lista VIP</span>
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
+            </button>
+          </div>
         </div>
       </nav>
 

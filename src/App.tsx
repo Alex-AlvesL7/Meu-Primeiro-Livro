@@ -26,7 +26,7 @@ function CharacterPortrait({ name, imageUrl, position = "object-center" }: { nam
     <img 
       src={imageUrl} 
       alt={name} 
-      className={`h-full w-full ${position} object-cover grayscale contrast-125 transition-all group-hover:grayscale-0 group-hover:contrast-100`}
+      className={`h-full w-full ${position} object-cover grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100 [@media(hover:none)]:grayscale-0 [@media(hover:none)]:contrast-100`}
       referrerPolicy="no-referrer"
     />
   );
@@ -616,7 +616,7 @@ function Home() {
           <div className="grid gap-12 md:grid-cols-3">
             {characters.map((char) => (
               <div key={char.name} className="group">
-                <div className="mb-8 aspect-[3/4] overflow-hidden border border-white/5 bg-neutral-900 transition-all">
+                <div className="mb-8 aspect-[3/4] overflow-hidden border border-white/5 bg-neutral-900 transition-all [@media(hover:none)]:border-gold/20">
                   <CharacterPortrait name={char.name} imageUrl={char.imageUrl} position={char.position} />
                 </div>
                 <span className="text-xs font-bold uppercase tracking-widest text-bronze">{char.role}</span>

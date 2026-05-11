@@ -133,7 +133,7 @@ app.post('/api/send-email', async (req, res) => {
                         Seu acesso foi <strong style="color:#d4af37;">concedido</strong>. Os arquivos que pediu estão prontos para download.
                       </p>
                       <p style="margin:0 0 32px;font-size:15px;line-height:1.8;color:#aaa;">
-                        Abaixo você encontra um <strong style="color:#fff;">cupom exclusivo</strong> com 20% de desconto — seu presente por fazer parte desta lista antes de todos.
+                        Como membro da lista VIP, você tem acesso antecipado ao livro. Garanta o seu agora:
                       </p>
 
                       <!-- Quote -->
@@ -147,26 +147,19 @@ app.post('/api/send-email', async (req, res) => {
                         </tr>
                       </table>
 
-                      <!-- Coupon -->
-                      <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:40px;border:1px dashed #333;">
+                      <!-- Botões de compra -->
+                      <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:40px;">
                         <tr>
-                          <td align="center" style="padding:24px 24px 16px;">
-                            <p style="margin:0 0 8px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#666;">Seu Cupom Exclusivo — 20% OFF no Livro Digital</p>
-                            <p style="margin:0 0 4px;font-size:28px;font-weight:900;letter-spacing:8px;color:#ffffff;font-family:monospace;">FANTASMA20</p>
-                            <p style="margin:0 0 20px;font-size:12px;color:#666;">Cupom exclusivo para leitores VIP</p>
-
-                            <!-- Botão Digital -->
+                          <td align="center" style="padding:8px 0;">
                             <a href="https://checkout.infinitepay.io/l7fitness/2XxELH26z7"
                               target="_blank"
-                              style="display:block;background-color:#d4af37;color:#000000;text-decoration:none;font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:14px 24px;margin-bottom:10px;">
-                              📖 Comprar Livro Digital
+                              style="display:block;background-color:#d4af37;color:#000000;text-decoration:none;font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase;padding:16px 24px;margin-bottom:10px;">
+                              📖 Comprar Livro Digital — R$ 29,90
                             </a>
-
-                            <!-- Botão Físico -->
                             <a href="https://loja.infinitepay.io/l7fitness/pny7214-livro---the-melted-cross"
                               target="_blank"
                               style="display:block;background-color:transparent;color:#aaaaaa;text-decoration:none;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:14px 24px;border:1px solid #333;">
-                              📦 Comprar Edição Física
+                              📦 Comprar Edição Física — R$ 44,90
                             </a>
                           </td>
                         </tr>

@@ -578,14 +578,14 @@ function Home() {
               <motion.div 
                 key={file.code}
                 whileHover={{ y: -10 }}
-                className="group relative flex flex-col items-start overflow-hidden border border-white/10 bg-[#1a1a1a] p-10 text-left transition-all hover:border-bronze/40"
+                className="group relative flex flex-col items-start overflow-hidden border border-white/10 bg-[#1a1a1a] p-10 text-left transition-all hover:border-bronze/40 [@media(hover:none)]:border-bronze/30"
               >
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0 z-0 opacity-30 transition-opacity group-hover:opacity-60">
+                <div className="absolute inset-0 z-0 opacity-30 transition-opacity duration-700 group-hover:opacity-60 [@media(hover:none)]:opacity-60">
                   <img 
                     src={file.imageUrl} 
                     alt="" 
-                    className="h-full w-full object-cover grayscale contrast-125"
+                    className="h-full w-full object-cover grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100 [@media(hover:none)]:grayscale-0 [@media(hover:none)]:contrast-100"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent" />
@@ -595,9 +595,9 @@ function Home() {
                   <div className="mb-6 inline-block border border-bronze/40 bg-bronze/5 px-3 py-1 text-[10px] font-black uppercase tracking-[0.3em] text-bronze">
                     {file.code}
                   </div>
-                  <h3 className="mb-4 font-serif text-3xl font-bold text-white group-hover:text-bronze">{file.title}</h3>
+                  <h3 className="mb-4 font-serif text-3xl font-bold text-white group-hover:text-bronze [@media(hover:none)]:text-bronze">{file.title}</h3>
                   <p className="text-sm leading-relaxed text-neutral-400">{file.description}</p>
-                  <div className="mt-8 h-px w-full bg-white/5 transition-all group-hover:bg-bronze/30" />
+                  <div className="mt-8 h-px w-full bg-white/5 transition-all group-hover:bg-bronze/30 [@media(hover:none)]:bg-bronze/30" />
                 </div>
               </motion.div>
             ))}
